@@ -11,15 +11,15 @@ public class SearchCommand extends Command {
 
     public SystemFacade systemFacade;
 
-    public void execute(){
+    public String execute(){
         this.memento = this.systemFacade.createMemento();
 		Contact  ct = this.systemFacade.searchContact(this.name);
 		System.out.println("Printing contact searched");
         if(ct!=null){
-		    System.out.println(ct.getName()+","+ct.getUniqueIdentifier());
+		    return ct.getName()+","+ct.getUniqueIdentifier();
         }
         else{
-            System.out.println("No contact found");
+            return "No contact found";
         }
     }
 

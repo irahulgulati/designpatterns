@@ -28,14 +28,17 @@ public abstract class ContactBuilder {
 	}
 	
 	public static ContactBuilder getContactBuilder() {
-		if (contactInstance != null) {
-			return contactInstance;
-		}
-		else {
+		System.out.println("contact instance" + contactInstance);
+		// if (instanceTable.get(ContactType.contactType) == null) {
+		// 	return contactInstance;
+		// }
+		// else {
 			contactInstance = instanceTable.get(ContactType.contactType);
 			return contactInstance;
-		}
+		// }
 	}
+
+	public abstract Hashtable<String,String> getResult();
 	
 	// public abstract Hashtable<String, String> getResult();
 }

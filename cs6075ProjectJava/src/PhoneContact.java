@@ -13,9 +13,12 @@ public class PhoneContact extends Contact {
 
     public String number;
 
+    public String type;
+
     public PhoneContact(String name, String number){
         this.name = name;
         this.number = number;
+        this.type = "Phone number";
     }
 
     public String getName(){
@@ -25,5 +28,9 @@ public class PhoneContact extends Contact {
     public String getUniqueIdentifier() {
         // TODO Auto-generated method stub
         return this.number;
+    }
+
+    public String getType(){
+        return this.type;
     }
 }

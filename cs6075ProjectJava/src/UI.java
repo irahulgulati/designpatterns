@@ -65,7 +65,8 @@ public class UI {
 			System.out.println("3: Save contacts to contact file");
 			System.out.println("4: Search contact in contact list");
 			System.out.println("5: Undo :Only works for add and remove command:");
-			System.out.println("6: Quit");
+			System.out.println("6: Print list of contacts of specific type(either email or phone number)");
+			System.out.println("7: Quit");
 
 			Scanner scan  = new Scanner(System.in);
 			int selectedOption = scan.nextInt();
@@ -99,7 +100,14 @@ public class UI {
 					qc.unexecute();
 				}
 			}
-			else if (selectedOption == 6) {
+			else if(selectedOption == 6){
+				System.out.println("Please enter contact type:");
+				String selectedContactType = scan.next();
+				Command printallCommand = new PrintAllCommand(this.systemFacade, selectedContactType);
+				this.commandStack.add(printallCommand);
+				printallCommand.execute();
+			}
+			else if (selectedOption == 7) {
 				System.out.println("Exiting application!!!");
 				cont = false;
 				System.exit(1);
@@ -116,7 +124,30 @@ public class UI {
 		String searchName = scan.next();
 		Command searchcommand = new SearchCommand(this.systemFacade, searchName);
 		this.commandStack.add(searchcommand);
-		searchcommand.execute();
+		String message = searchcommand.execute();
+		stylizedOutput(message);
+
+	}
+
+	public void stylizedOutput(String message){
+		Scanner scan  = new Scanner(System.in);
+		System.out.println("Please select style you want to apply to searched text");
+		System.out.println("1: Print large text");
+		System.out.println("2: Print small text");
+		System.out.println("3: Print text in red color");
+		int selectedStyleOption = scan.nextInt();
+		if(selectedStyleOption == 1){
+			PrintDecorator largedecorator = new LargeText(message);
+			largedecorator.printText();
+		}
+		else if(selectedStyleOption == 2){
+			PrintDecorator  smalldecorator = new SmallText(message);
+			smalldecorator.printText();
+		}
+		else if(selectedStyleOption == 3){
+			PrintDecorator colordecorator = new ColoredText(message);
+			colordecorator.printText();
+		}
 	}
 	
 	public UI() {

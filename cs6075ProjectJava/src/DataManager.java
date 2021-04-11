@@ -26,26 +26,37 @@ public class DataManager {
 	
 	// private ArrayList<Contact> contactList; //this has to be from adapter pattern
  	
-	public Hashtable<String, String> getAllContactsOf(String contactType) {
-		String fileName = null;
-		
-		if (contactType == "PhoneNumber") {
-		  new PhoneNumberBuilder();
-		  ContactType.contactType = "PhoneNumberBuilder";
-		  fileName = "contacts.data";
+	public Hashtable<String, String> fetchContactsOf(String contactType)  throws IOException{
+		try {
+				String fileName = null;
+				Hashtable<String, String> result = null;
+				if (contactType.equals("phonenumber")) {
+					System.out.println("Inside if");
+					new PhoneNumberBuilder();
+					ContactType.contactType = "PhoneNumberBuilder";
+					ContactBuilder builder = (PhoneNumberBuilder) ContactBuilder.getContactBuilder();
+					fileName = "contacts.data";
+					ContactDirector director = new ContactDirector(builder);
+					director.buildList(fileName);
+					result = builder.getResult();
+				}
+			
+				if(contactType .equals("email")){
+					new EmailBuilder();
+					ContactType.contactType = "EmailBuilder";
+					ContactBuilder builder = (EmailBuilder) ContactBuilder.getContactBuilder();
+					fileName = "contacts.data";
+					ContactDirector director = new ContactDirector(builder);
+					director.buildList(fileName);
+					result= builder.getResult();
+				}
+
+				return result;
+		}
+		catch(IOException e){
+			throw e;
 		}
 		
-		if(contactType == "Email") {
-		  new EmailBuilder();
-		  ContactType.contactType = "EmailBuilder";
-		  fileName = "contacts.data";
-		}
-	  
-		EmailBuilder builder = (EmailBuilder) ContactBuilder.getContactBuilder();
-		ContactDirector director = new ContactDirector(builder);
-		director.buildList(fileName);
-		Hashtable<String, String> result= builder.getResult();
-		return result;
 	}
 	
 	public void save() throws IOException {
@@ -59,9 +70,9 @@ public class DataManager {
 			Contact contact = this.contactList.get(i);
 			String name = contact.getName();
 			String identifier = contact.getUniqueIdentifier();
-			writer.println(name+","+identifier);
+			String type = contact.getType();
+			writer.println(name+","+identifier+","+type);
 		}
-		System.out.println(this.contactList);
 	   
 	    writer.close();
 	}

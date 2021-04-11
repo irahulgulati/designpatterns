@@ -42,8 +42,13 @@ public class SystemFacade {
 		this.dataManager.save();
 	}
 
-	public Hashtable<String, String> getAllContactsOf(String contactType){
-		return this.dataManager.getAllContactsOf(contactType);
+	public Hashtable<String, String> fetchContactsOf(String contactType) throws IOException{
+		try{
+			return this.dataManager.fetchContactsOf(contactType);
+		}
+		catch(IOException e){
+			throw e;
+		}
 	}
 
 	public Memento createMemento(){

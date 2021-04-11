@@ -11,10 +11,12 @@
 public class EmailContact extends Contact {
     public String name;
     public String email;
+    public String type;
 
     public EmailContact(String name, String email){
         this.name = name;
         this.email = email;
+        this.type = "email";
     }
 
     public String getName(){
@@ -23,5 +25,9 @@ public class EmailContact extends Contact {
 
     public String getUniqueIdentifier(){
         return this.email;
+    }
+
+    public String getType(){
+        return this.type;
     }
 }

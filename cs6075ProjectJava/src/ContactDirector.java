@@ -23,7 +23,7 @@ public class ContactDirector {
 	private ContactBuilder contactBuilder;
 	
 	
-	public void buildList(String fileName) {
+	public void buildList(String fileName) throws IOException {
 		try {
 			File fileManager = new File(fileName);
 //			StringBuffer text = new StringBuffer();
@@ -41,7 +41,7 @@ public class ContactDirector {
 			buffer.close();
 		}
 		catch(IOException e) {
-			System.out.println("Error while accessing the file");
+			throw new IOException("Cannot find file");
 		}
 	}
 	

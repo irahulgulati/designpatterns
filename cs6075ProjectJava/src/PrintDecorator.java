@@ -17,11 +17,20 @@ public abstract class PrintDecorator {
 	* <!-- end-UML-doc -->
 	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
 	*/
-	private Set<Contact> decorates;
+	// private Set<Contact> decorates;
+	private String text;
+
+	public PrintDecorator(String s){
+		this.text = s; 
+	}
+
+	public void printText(){
+		System.out.println(this.text);
+	}
 	/** 
 	* <!-- begin-UML-doc -->
 	* <!-- end-UML-doc -->
 	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
 	*/
-	private UI uI;
+	// private UI uI;
 }

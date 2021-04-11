@@ -14,4 +14,6 @@ public abstract class Contact {
     public abstract String getName();
 
     public abstract String getUniqueIdentifier() ;
+
+    public abstract String getType();
 }

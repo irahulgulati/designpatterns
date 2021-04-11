@@ -15,8 +15,9 @@ public class EmailBuilder extends ContactBuilder {
 	
 	public void buildContactList(String contactDetail) {
 		String[] arrOfStr = contactDetail.split(",");
-		this.contactTable.put("Name", arrOfStr[0]);
-		this.contactTable.put("Email", arrOfStr[1]);
+		if(arrOfStr[2].equals("email")){
+			this.contactTable.put(arrOfStr[0], arrOfStr[1]);
+		}
 	}
 	
 	public Hashtable<String,String> getResult() {

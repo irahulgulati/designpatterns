@@ -5,13 +5,13 @@ public class RemoveCommand extends Command{
 
     public SystemFacade systemFacade;
 
-    public void execute(){
+    public String execute(){
         this.memento = this.systemFacade.createMemento();
 		if(this.systemFacade.deleteContact(this.identifier)){
-            System.out.println("Deleted contact");
+            return "Deleted contact";
         }
         else{
-            System.out.println("Cannot delete contact, either it does not exist or there was some error");
+            return "Cannot delete contact, either it does not exist or there was some error";
         }
     }
 

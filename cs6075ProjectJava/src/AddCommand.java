@@ -9,10 +9,11 @@ public class AddCommand extends Command{
 
     public SystemFacade systemFacade;
 
-    public void execute(){
+    public String execute(){
         // call to do something
         memento = this.systemFacade.createMemento();
         this.systemFacade.addContact(this.contact);
+        return "Contact added";
     }
 
     public void unexecute(){

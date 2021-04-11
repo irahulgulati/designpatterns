@@ -11,16 +11,17 @@ public class SaveCommand extends Command {
     
     private Memento memento;
 
-    public SystemFacade systemFacade;
+    private SystemFacade systemFacade;
 
-    public void execute(){
+    public String execute(){
         // call to do something
         memento = this.systemFacade.createMemento();
 		try{
 			this.systemFacade.saveContacts();
+            return "Contact saved";
 		}
 		catch(IOException e){
-			System.out.println(e);
+            return "Error while saving contacts";
 		}
     }
 

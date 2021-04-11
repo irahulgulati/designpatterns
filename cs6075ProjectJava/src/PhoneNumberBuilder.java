@@ -16,8 +16,10 @@ public class PhoneNumberBuilder extends ContactBuilder {
 	
 	public void buildContactList(String contactDetail) {
 		String[] arrOfStr = contactDetail.split(",");
-		this.contactTable.put("Name", arrOfStr[0]);
-		this.contactTable.put("Email", arrOfStr[1]);
+		if(arrOfStr[2].equals("Phone number")){
+			this.contactTable.put( arrOfStr[0], arrOfStr[1]);
+			System.out.println(this.contactTable);
+		}
 	}
 	
 	public Hashtable<String,String> getResult() {
