@@ -16,14 +16,12 @@ public class ContactNameVisitor implements ContactVisitor {
     @Override
     public void visitContact(Contact contact) {
         // TODO Auto-generated method stub
-        System.out.println("visting contact and adding it");
         this.searchedContact.add(contact);
     }
 
     @Override
     public ArrayList<Contact> getResult() {
         // TODO Auto-generated method stub
-        System.out.println("Getting result");
         return searchedContact;
     }
 

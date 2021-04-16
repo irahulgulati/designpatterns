@@ -44,12 +44,7 @@ public class SystemFacade {
 	}
 
 	public Hashtable<String, String> fetchContactsOf(String contactType) throws IOException{
-		try{
-			return this.dataManager.fetchContactsOf(contactType);
-		}
-		catch(IOException e){
-			throw e;
-		}
+		return this.contactManager.fetchContact(contactType);
 	}
 
 	public Memento createMemento(){
@@ -57,8 +52,6 @@ public class SystemFacade {
 	}
 
 	public void setMemento(Memento memento){
-		System.out.println("Setting memento");
-		System.out.println(memento);
 		this.dataManager.setMemento(memento);
 	}
 

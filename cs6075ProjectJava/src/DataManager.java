@@ -31,7 +31,6 @@ public class DataManager {
 				String fileName = null;
 				Hashtable<String, String> result = null;
 				if (contactType.equals("phonenumber")) {
-					System.out.println("Inside if");
 					new PhoneNumberBuilder();
 					ContactType.contactType = "PhoneNumberBuilder";
 					ContactBuilder builder = (PhoneNumberBuilder) ContactBuilder.getContactBuilder();

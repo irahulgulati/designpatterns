@@ -1,3 +1,5 @@
+import java.io.IOException;
+import java.util.Hashtable;
 
 /**
  * 
@@ -26,7 +28,18 @@ public class ContactManager {
 		return this.dataManager.deleteContact(identifier);
 	}
 
+	public Hashtable<String, String> fetchContact(String contactType) throws IOException{
+		
+		try{
+			return this.dataManager.fetchContactsOf(contactType);
+		}
+		catch(IOException e){
+			throw e;
+		}
+	}
+
 	public ContactManager(DataManager dataManager){
 		this.dataManager = dataManager;
 	}
+
 }

@@ -28,7 +28,6 @@ public abstract class ContactBuilder {
 	}
 	
 	public static ContactBuilder getContactBuilder() {
-		System.out.println("contact instance" + contactInstance);
 		// if (instanceTable.get(ContactType.contactType) == null) {
 		// 	return contactInstance;
 		// }
