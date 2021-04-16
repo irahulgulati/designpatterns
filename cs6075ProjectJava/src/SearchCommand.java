@@ -14,7 +14,6 @@ public class SearchCommand extends Command {
     public String execute(){
         this.memento = this.systemFacade.createMemento();
 		Contact  ct = this.systemFacade.searchContact(this.name);
-		System.out.println("Printing contact searched");
         if(ct!=null){
 		    return ct.getName()+","+ct.getUniqueIdentifier();
         }

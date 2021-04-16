@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 /** 
  * <!-- begin-UML-doc -->
  * <!-- end-UML-doc -->
@@ -17,7 +17,6 @@ public class ContactFinder {
 		ContactList contacts = this.dataManager.getAllContacts();
 		for(int contact = 0; contact<contacts.count();contact++){
 			Contact selectedContact  = contacts.get(contact);
-			System.out.println("ASDSADSA"+ selectedContact.getName());
 			if(selectedContact.getName().equals(name)){
 				return selectedContact;
 			}

@@ -33,21 +33,23 @@ public class UI {
    public void addContact() {
 	   Scanner scan = new Scanner(System.in);
 	   System.out.println("Please select which type of contact you want to add");
-	   System.out.println("1: Contact with phone number, 2: Contact with email addressj");
+	   System.out.println("1: Contact with phone number,");
+	   System.out.println("2: Contact with email address");
 	   int selectedOption = scan.nextInt();
 	   if (selectedOption ==1){
-			System.out.println("Please enter contact name and phone number seperated by comma");
-			String input = scan.next();
-			String[] arr = input.split(",");
-			ContactFactory contactFactory = new PhoneContactFactory(arr[0], arr[1]);
+			System.out.println("Please enter contact name");
+			String name = scan.next();
+			System.out.println("Please enter contact phone number");
+			String number = scan.next();
+			ContactFactory contactFactory = new PhoneContactFactory(name,number);
 			this.contact = contactFactory.createContactObject();
 	   }
 	   if(selectedOption == 2){
 		   	System.out.println("Please enter contact name");
 			String name = scan.next();
 			System.out.println("Please enter contact email address");
-			String number = scan.next();
-			ContactFactory contactFactory = new EmailContactFactory(name, number);
+			String email = scan.next();
+			ContactFactory contactFactory = new EmailContactFactory(name, email);
 			this.contact = contactFactory.createContactObject();
 	   }
 	   Command addCommand = new AddCommand( this.contact, systemFacade);
@@ -131,10 +133,13 @@ public class UI {
 
 	public void stylizedOutput(String message){
 		Scanner scan  = new Scanner(System.in);
+		System.out.println("###############################################################################");
 		System.out.println("Please select style you want to apply to searched text");
 		System.out.println("1: Print large text");
 		System.out.println("2: Print small text");
 		System.out.println("3: Print text in red color");
+		System.out.println("4: Print simple text");
+		System.out.println("##############################################################################");
 		int selectedStyleOption = scan.nextInt();
 		if(selectedStyleOption == 1){
 			PrintDecorator largedecorator = new LargeText(message);
@@ -147,6 +152,9 @@ public class UI {
 		else if(selectedStyleOption == 3){
 			PrintDecorator colordecorator = new ColoredText(message);
 			colordecorator.printText();
+		}
+		else if(selectedStyleOption == 4){
+			System.out.println(message);
 		}
 	}
 	
