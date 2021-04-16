@@ -1,3 +1,5 @@
+import java.text.MessageFormat;
+
 /**
  * 
  */
@@ -33,4 +35,15 @@ public class PhoneContact extends Contact {
     public String getType(){
         return this.type;
     }
+
+    @Override
+    public String toString(){
+        return MessageFormat.format("Name: {0}, Contact: {1}", this.name, this.number);
+    }
+
+    public void accept(ContactVisitor visitor){
+        System.out.println("Accepting phone contact");
+        visitor.visitContact(this);
+    }
+
 }

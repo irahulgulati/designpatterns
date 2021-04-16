@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class PrintAllCommand extends Command{
@@ -9,7 +10,7 @@ public class PrintAllCommand extends Command{
 
     private SystemFacade systemFacade;
 
-    public String execute(){
+    public ArrayList execute(){
         // call to do something
         memento = this.systemFacade.createMemento();
 		try{
@@ -17,10 +18,10 @@ public class PrintAllCommand extends Command{
             for(String key: ht.keySet()){
                 System.out.println("Name:    " + key+ "   Contact Detail:  " + ht.get(key));
             }
-            return "Contact saved";
+            return null;
 		}
 		catch(IOException e){
-            return "Error while saving contacts";
+            return null;
 		}
     }
 

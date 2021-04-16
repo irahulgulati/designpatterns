@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Hashtable;
 /** 
  * <!-- begin-UML-doc -->
@@ -34,7 +35,7 @@ public class SystemFacade {
 		return this.contactManager.deleteContact(identifier);
 	}
 
-	public Contact searchContact(String name){
+	public ArrayList<Contact> searchContact(String name){
 		return this.contactFinder.findContact(name);
 	}
 

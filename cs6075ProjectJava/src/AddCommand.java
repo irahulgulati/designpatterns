@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class AddCommand extends Command{
@@ -9,11 +10,11 @@ public class AddCommand extends Command{
 
     public SystemFacade systemFacade;
 
-    public String execute(){
+    public ArrayList execute(){
         // call to do something
         memento = this.systemFacade.createMemento();
         this.systemFacade.addContact(this.contact);
-        return "Contact added";
+        return null;
     }
 
     public void unexecute(){

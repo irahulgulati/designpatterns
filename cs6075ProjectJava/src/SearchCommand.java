@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /** 
  * <!-- begin-UML-doc -->
  * <!-- end-UML-doc -->
@@ -11,14 +13,14 @@ public class SearchCommand extends Command {
 
     public SystemFacade systemFacade;
 
-    public String execute(){
+    public ArrayList<Contact> execute(){
         this.memento = this.systemFacade.createMemento();
-		Contact  ct = this.systemFacade.searchContact(this.name);
-        if(ct!=null){
-		    return ct.getName()+","+ct.getUniqueIdentifier();
+		ArrayList<Contact>  ct = this.systemFacade.searchContact(this.name);
+        if(ct.size() > 0 ){
+            return ct;
         }
         else{
-            return "No contact found";
+            return null;
         }
     }
 

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * 
  */
@@ -10,8 +12,8 @@
  */
 public class SmallText extends PrintDecorator {
     // private PrintDecorator text;
-    public SmallText(String string) {
-        super(string);
+    public SmallText(ArrayList<Contact> contacts) {
+        super(contacts);
     }
 
     public void printText(){

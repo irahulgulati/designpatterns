@@ -1,11 +1,5 @@
 
 import java.util.ArrayList;
-import java.util.Iterator;
-
-/**
- * 
- */
-
 /** 
  * <!-- begin-UML-doc -->
  * <!-- end-UML-doc -->
@@ -64,6 +58,10 @@ public class ContactListAdapter extends ArrayList<Contact> implements ContactLis
 
 	public void deleteAll() {
 		super.clear();
+	}
+
+	public ContactIterator createIterator(){
+		return new ConcreteIterator(this);
 	}
 
 }

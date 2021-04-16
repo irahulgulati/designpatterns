@@ -90,5 +90,7 @@ public interface ContactList {
 	*/
 	public void deleteAll();
 
+	public ContactIterator createIterator();
+
 
 }

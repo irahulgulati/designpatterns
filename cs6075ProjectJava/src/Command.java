@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * 
  */
@@ -14,7 +16,7 @@ public abstract class Command {
 	* <!-- end-UML-doc -->
 	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
 	*/
-	public abstract String execute();
+	public abstract ArrayList execute();
 
 	public abstract void unexecute();
 }

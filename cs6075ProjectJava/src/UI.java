@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -126,12 +127,17 @@ public class UI {
 		String searchName = scan.next();
 		Command searchcommand = new SearchCommand(this.systemFacade, searchName);
 		this.commandStack.add(searchcommand);
-		String message = searchcommand.execute();
-		stylizedOutput(message);
+		ArrayList<Contact> searchedContacts = searchcommand.execute();
+		if (searchedContacts != null){
+			stylizedOutput(searchedContacts);
+		}
+		else{
+			System.out.println("No contacts found");
+		}
 
 	}
 
-	public void stylizedOutput(String message){
+	public void stylizedOutput(ArrayList<Contact> searchedContacts){
 		Scanner scan  = new Scanner(System.in);
 		System.out.println("###############################################################################");
 		System.out.println("Please select style you want to apply to searched text");
@@ -142,19 +148,22 @@ public class UI {
 		System.out.println("##############################################################################");
 		int selectedStyleOption = scan.nextInt();
 		if(selectedStyleOption == 1){
-			PrintDecorator largedecorator = new LargeText(message);
+			PrintDecorator largedecorator = new LargeText(searchedContacts);
 			largedecorator.printText();
 		}
 		else if(selectedStyleOption == 2){
-			PrintDecorator  smalldecorator = new SmallText(message);
+			PrintDecorator  smalldecorator = new SmallText(searchedContacts);
 			smalldecorator.printText();
 		}
 		else if(selectedStyleOption == 3){
-			PrintDecorator colordecorator = new ColoredText(message);
+			PrintDecorator colordecorator = new ColoredText(searchedContacts);
 			colordecorator.printText();
 		}
 		else if(selectedStyleOption == 4){
-			System.out.println(message);
+			// System.out.println(message);
+			for(Contact contact: searchedContacts){
+				System.out.println(contact.toString());
+			}
 		}
 	}
 	

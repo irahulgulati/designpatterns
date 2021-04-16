@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * 
  */
@@ -11,8 +13,8 @@
 public class LargeText extends PrintDecorator {
 
     // private PrintDecorator text;
-    public LargeText(String string) {
-        super(string);
+    public LargeText(ArrayList<Contact> contacts) {
+        super(contacts);
     }
 
     public void printText(){

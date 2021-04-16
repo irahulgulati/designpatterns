@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 
 /** 
  * <!-- begin-UML-doc -->
@@ -13,15 +14,15 @@ public class SaveCommand extends Command {
 
     private SystemFacade systemFacade;
 
-    public String execute(){
+    public ArrayList execute(){
         // call to do something
         memento = this.systemFacade.createMemento();
 		try{
 			this.systemFacade.saveContacts();
-            return "Contact saved";
+            return null;
 		}
 		catch(IOException e){
-            return "Error while saving contacts";
+            return null;
 		}
     }
 

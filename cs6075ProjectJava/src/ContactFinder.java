@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 /** 
  * <!-- begin-UML-doc -->
@@ -13,15 +14,17 @@ public class ContactFinder {
 	*/
 	private DataManager dataManager;
 
-	public Contact findContact(String name){
+	public ArrayList<Contact> findContact(String name){
 		ContactList contacts = this.dataManager.getAllContacts();
-		for(int contact = 0; contact<contacts.count();contact++){
-			Contact selectedContact  = contacts.get(contact);
-			if(selectedContact.getName().equals(name)){
-				return selectedContact;
+		ContactIterator  iterator= contacts.createIterator();
+		ContactVisitor visitor = new ContactNameVisitor();
+		for(iterator.first();!iterator.isDone();iterator.next()){
+			Contact currentContact = iterator.currentItem();
+			if(currentContact.getName().equals(name)){
+				currentContact.accept(visitor);
 			}
 		}
-		return null;
+		return visitor.getResult();
 	}
 
 	public ContactFinder(DataManager dataManager){

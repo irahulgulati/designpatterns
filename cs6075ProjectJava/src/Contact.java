@@ -16,4 +16,6 @@ public abstract class Contact {
     public abstract String getUniqueIdentifier() ;
 
     public abstract String getType();
+
+    public abstract void accept(ContactVisitor visitor);
 }

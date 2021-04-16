@@ -1,7 +1,4 @@
-/**
- * 
- */
-
+import java.text.MessageFormat;
 /** 
  * <!-- begin-UML-doc -->
  * <!-- end-UML-doc -->
@@ -29,5 +26,15 @@ public class EmailContact extends Contact {
 
     public String getType(){
         return this.type;
+    }
+
+    @Override
+    public String toString(){
+        return MessageFormat.format("Name: {0}, Contact: {1}", this.name, this.email);
+    }
+
+    public void accept(ContactVisitor visitor){
+        System.out.println("Accepting email contact");
+        visitor.visitContact(this);
     }
 }

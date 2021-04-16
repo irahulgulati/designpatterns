@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class RemoveCommand extends Command{
    private Memento memento;
 
@@ -5,13 +7,13 @@ public class RemoveCommand extends Command{
 
     public SystemFacade systemFacade;
 
-    public String execute(){
+    public ArrayList execute(){
         this.memento = this.systemFacade.createMemento();
 		if(this.systemFacade.deleteContact(this.identifier)){
-            return "Deleted contact";
+            return null;
         }
         else{
-            return "Cannot delete contact, either it does not exist or there was some error";
+            return null;
         }
     }
 

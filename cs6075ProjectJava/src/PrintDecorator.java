@@ -3,6 +3,7 @@
  * 
  */
 
+import java.util.ArrayList;
 import java.util.Set;
 
 /** 
@@ -17,15 +18,16 @@ public abstract class PrintDecorator {
 	* <!-- end-UML-doc -->
 	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
 	*/
-	// private Set<Contact> decorates;
-	private String text;
+	private ArrayList<Contact> contacts;
 
-	public PrintDecorator(String s){
-		this.text = s; 
+	public PrintDecorator(ArrayList<Contact> contacts){
+		this.contacts= contacts; 
 	}
 
 	public void printText(){
-		System.out.println(this.text);
+		for(Contact contact: this.contacts){
+			System.out.println(contact.toString());	
+		}
 	}
 	/** 
 	* <!-- begin-UML-doc -->
